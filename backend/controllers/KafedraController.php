@@ -11,7 +11,7 @@ use yii\filters\VerbFilter;
 /**
  * KafedralarController implements the CRUD actions for Kafedralar model.
  */
-class KafedralarController extends Controller
+class KafedraController extends Controller
 {
     /**
      * @inheritDoc

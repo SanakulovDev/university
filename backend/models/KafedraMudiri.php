@@ -16,7 +16,7 @@ use Yii;
  * @property string $email
  * @property string $image
  *
- * @property Kafedralar $kafedra
+ * @property Kafedralar $kafedralar
  */
 class KafedraMudiri extends \yii\db\ActiveRecord
 {

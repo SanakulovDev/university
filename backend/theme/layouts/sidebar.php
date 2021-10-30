@@ -36,7 +36,18 @@
             <?php
             echo \hail812\adminlte\widgets\Menu::widget([
                 'items' => [
-                    ['label' => 'Simple Link', 'icon' => 'tachometer-alt','url'=>['/kafedralar/']],
+                    ['label' => 'Rektor', 'icon' => 'tachometer-alt','url'=>['/rektor/']],
+                    ['label' => 'Dekan', 'icon' => 'tachometer-alt','url'=>['/fakultet-dekan/']],
+                    ['label' => 'Dekan Muovin', 'icon' => 'tachometer-alt','url'=>['/fakultet-dekan-movin/']],
+                    ['label' => 'Talabalar', 'icon' => 'tachometer-alt','url'=>['/talabalar/']],
+                    ['label' => 'Fakultetlar', 'icon' => 'tachometer-alt','url'=>['/fakultetlar/']],
+                    ['label' => "O'qish turi", 'icon' => 'tachometer-alt','url'=>['/uqish-turi/']],
+                    ['label' => "Talaba turi", 'icon' => 'tachometer-alt','url'=>['/talaba-turi/']],
+                    ['label' => "Kafedra ", 'icon' => 'tachometer-alt','url'=>['/kafedra/']],
+                    ['label' => "Kafedra mudiri", 'icon' => 'tachometer-alt','url'=>['/kafedra-mudiri/']],
+                    ['label' => "Talaba turi", 'icon' => 'tachometer-alt','url'=>['/talaba-turi/']],
+                    ['label' => "Talaba turi", 'icon' => 'tachometer-alt','url'=>['/talaba-turi/']],
+
                 ],
             ]);
             ?>
