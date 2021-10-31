@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\KafedraMudiri */
+/* @var $model common\models\Ustozlar */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Kafedra Mudiris'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Ustozlars'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="kafedra-mudiri-view">
+<div class="ustozlar-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -30,20 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            [
-                'attribute'=>'kafedra_id',
-                'value'=>$model->kafedra->kafedra_nomi
-            ],
-            'mudir_ismi',
-            'mudir_familiyasi',
-            'qabul_vaqti',
+            'kafedra_id',
+            'ismi',
+            'familiyasi',
             'telefon',
-            'email:email',
-            [
-                'attribute' => 'image',
-                'value' => '@web/uploads/kafedra/' . $model->image,
-                'format' => ['image', ['width' => '150', 'height' => '150']]
-            ]
+            'user_id',
         ],
     ]) ?>
 

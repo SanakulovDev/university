@@ -4,15 +4,16 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Fanlar */
+/* @var $model backend\models\Fanlar */
 /* @var $form yii\widgets\ActiveForm */
+$teacher_list = \common\models\Ustozlar::selectList()
 ?>
 
 <div class="fanlar-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'ustozlar_id')->textInput() ?>
+    <?= $form->field($model, 'ustozlar_id')->dropDownList($teacher_list,['prompt'=>"Ustozlarni tanlang"]) ?>
 
     <?= $form->field($model, 'fanlar_nomi')->textInput(['maxlength' => true]) ?>
 

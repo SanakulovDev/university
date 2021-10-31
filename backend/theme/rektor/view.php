@@ -37,6 +37,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'email:email',
             'qabul_vaqti',
             'vazifalari',
+            [
+                    'attribute'=>'image',
+                    'value'=>'@web/uploads/rektor/'.$model->image,
+                    'format' => ['image', ['width' => '150', 'height' => '150']]
+            ]
         ],
     ]) ?>
 

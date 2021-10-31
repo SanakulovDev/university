@@ -6,6 +6,7 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Kafedralar */
 /* @var $form yii\widgets\ActiveForm */
+$falkultet_list = \backend\models\Fakultetlar::selectList();
 ?>
 
 <div class="kafedralar-form">
@@ -14,7 +15,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'kafedra_nomi')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'fakultet_id')->textInput() ?>
+    <?= $form->field($model, 'fakultet_id')->dropDownList($falkultet_list,['prompt'=>"Fakultetni tanlang"]) ?>
 
     <?= $form->field($model, 'fakultet_haqida')->textInput(['maxlength' => true]) ?>
 

@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "kafedralar".
@@ -70,5 +71,8 @@ class Kafedralar extends \yii\db\ActiveRecord
     public function getKafedraMudiris()
     {
         return $this->hasMany(KafedraMudiri::className(), ['kafedra_id' => 'id']);
+    }
+    public static function selectList() {
+        return ArrayHelper::map(self::find()->all(), 'id', 'kafedra_nomi');
     }
 }

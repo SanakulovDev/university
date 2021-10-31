@@ -2,17 +2,16 @@
 
 namespace backend\controllers;
 
-use backend\models\KafedraMudiri;
-use backend\models\KafedraMudiriSearch;
+use common\models\Ustozlar;
+use common\models\UstozlarSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
 
 /**
- * KafedraMudiriController implements the CRUD actions for KafedraMudiri model.
+ * UstozlarController implements the CRUD actions for Ustozlar model.
  */
-class KafedraMudiriController extends Controller
+class UstozlarController extends Controller
 {
     /**
      * @inheritDoc
@@ -33,12 +32,12 @@ class KafedraMudiriController extends Controller
     }
 
     /**
-     * Lists all KafedraMudiri models.
+     * Lists all Ustozlar models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new KafedraMudiriSearch();
+        $searchModel = new UstozlarSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -48,7 +47,7 @@ class KafedraMudiriController extends Controller
     }
 
     /**
-     * Displays a single KafedraMudiri model.
+     * Displays a single Ustozlar model.
      * @param int $id ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -61,16 +60,16 @@ class KafedraMudiriController extends Controller
     }
 
     /**
-     * Creates a new KafedraMudiri model.
+     * Creates a new Ustozlar model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new KafedraMudiri();
+        $model = new Ustozlar();
+
         if ($this->request->isPost) {
-            $image = UploadedFile::getInstance($model, 'image');
-            if ($model->load($this->request->post()) && $model->upload($image) && $model->save()) {
+            if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -83,7 +82,7 @@ class KafedraMudiriController extends Controller
     }
 
     /**
-     * Updates an existing KafedraMudiri model.
+     * Updates an existing Ustozlar model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return mixed
@@ -103,7 +102,7 @@ class KafedraMudiriController extends Controller
     }
 
     /**
-     * Deletes an existing KafedraMudiri model.
+     * Deletes an existing Ustozlar model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return mixed
@@ -117,15 +116,15 @@ class KafedraMudiriController extends Controller
     }
 
     /**
-     * Finds the KafedraMudiri model based on its primary key value.
+     * Finds the Ustozlar model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return KafedraMudiri the loaded model
+     * @return Ustozlar the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = KafedraMudiri::findOne($id)) !== null) {
+        if (($model = Ustozlar::findOne($id)) !== null) {
             return $model;
         }
 

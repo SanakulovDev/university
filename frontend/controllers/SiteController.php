@@ -94,18 +94,17 @@ class SiteController extends Controller
             return $this->goHome();
         }
         $model = new LoginForm();
+            if ($model->load(Yii::$app->request->post()) && $model->login()) {
 
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+                return $this->redirect('/talabalar/create');
+            }
 
-            return $this->goBack();
+            $model->password = '';
+
+            return $this->render('login', [
+                'model' => $model,
+            ]);
         }
-
-        $model->password = '';
-
-        return $this->render('login', [
-            'model' => $model,
-        ]);
-    }
 
     /**
      * Logs out the current user.
@@ -160,6 +159,7 @@ class SiteController extends Controller
     public function actionSignup()
     {
         $model = new SignupForm();
+
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
 
             Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');

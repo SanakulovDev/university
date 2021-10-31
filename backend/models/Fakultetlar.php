@@ -2,7 +2,9 @@
 
 namespace backend\models;
 
+use common\models\Talabalar;
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "fakultetlar".
@@ -99,5 +101,9 @@ class Fakultetlar extends \yii\db\ActiveRecord
     public function getTalabalars()
     {
         return $this->hasMany(Talabalar::className(), ['fakultet_id' => 'id']);
+    }
+
+    public static function selectList() {
+        return ArrayHelper::map(self::find()->all(), 'id', 'fakultet_nomi');
     }
 }

@@ -5,6 +5,7 @@ namespace common\models;
 use backend\models\Fanlar;
 use backend\models\Kafedralar;
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "ustozlar".
@@ -76,5 +77,8 @@ class Ustozlar extends \yii\db\ActiveRecord
     public function getKafedra()
     {
         return $this->hasOne(Kafedralar::className(), ['id' => 'kafedra_id']);
+    }
+    public static function selectList() {
+        return ArrayHelper::map(self::find()->all(), 'id', 'ismi');
     }
 }

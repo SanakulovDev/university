@@ -58,4 +58,6 @@ class Fanlar extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Ustozlar::className(), ['id' => 'ustozlar_id']);
     }
+
+
 }

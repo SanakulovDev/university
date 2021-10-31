@@ -35,10 +35,10 @@ class KafedraMudiri extends \yii\db\ActiveRecord
     {
         return [
             [['kafedra_id'], 'integer'],
-            [['mudir_ismi', 'mudir_familiyasi', 'qabul_vaqti', 'telefon', 'email', 'image'], 'required'],
+            [['kafedra_id','mudir_ismi', 'mudir_familiyasi', 'qabul_vaqti', 'telefon', 'email', 'image'], 'required'],
             [['mudir_ismi', 'qabul_vaqti', 'telefon'], 'string', 'max' => 30],
             [['mudir_familiyasi', 'email'], 'string', 'max' => 50],
-            [['image'], 'string', 'max' => 255],
+            [['image'], 'file','skipOnEmpty'=>true, 'extensions'=>['jpg', 'jpeg', 'png', 'svg']],
             [['kafedra_id'], 'exist', 'skipOnError' => true, 'targetClass' => Kafedralar::className(), 'targetAttribute' => ['kafedra_id' => 'id']],
         ];
     }
@@ -68,5 +68,20 @@ class KafedraMudiri extends \yii\db\ActiveRecord
     public function getKafedra()
     {
         return $this->hasOne(Kafedralar::className(), ['id' => 'kafedra_id']);
+    }
+
+    public function upload($image)
+    {
+        if ($image) {
+            $dir = Yii::getAlias('@backend')."/web/uploads/kafedra/";
+            $image_name = 'kafedra_mudiri_'.time();
+            $image_name .= '.'.$image->extension;
+            if ($image->saveAs($dir.$image_name)) {
+                $this->image = $image_name;
+                return true;
+            }
+        }
+
+        return false;
     }
 }

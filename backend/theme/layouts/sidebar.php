@@ -41,11 +41,13 @@
                     ['label' => 'Dekan Muovin', 'icon' => 'tachometer-alt','url'=>['/fakultet-dekan-movin/']],
                     ['label' => 'Talabalar', 'icon' => 'tachometer-alt','url'=>['/talabalar/']],
                     ['label' => 'Fakultetlar', 'icon' => 'tachometer-alt','url'=>['/fakultetlar/']],
+                    ['label' => 'Guruhlar', 'icon' => 'tachometer-alt','url'=>['/fakultet-guruhlari/']],
                     ['label' => "O'qish turi", 'icon' => 'tachometer-alt','url'=>['/uqish-turi/']],
                     ['label' => "Talaba turi", 'icon' => 'tachometer-alt','url'=>['/talaba-turi/']],
                     ['label' => "Kafedra ", 'icon' => 'tachometer-alt','url'=>['/kafedra/']],
                     ['label' => "Kafedra mudiri", 'icon' => 'tachometer-alt','url'=>['/kafedra-mudiri/']],
-                    ['label' => "Fanlar", 'icon' => 'tachometer-alt','url'=>['/talaba-turi/']],
+                    ['label' => "Ustozlar", 'icon' => 'tachometer-alt','url'=>['/ustozlar/']],
+                    ['label' => "Fanlar", 'icon' => 'tachometer-alt','url'=>['/fanlar/']],
                 ],
             ]);
             ?>

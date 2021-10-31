@@ -7,6 +7,7 @@ use backend\models\RektorSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * RektorController implements the CRUD actions for Rektor model.
@@ -69,7 +70,8 @@ class RektorController extends Controller
         $model = new Rektor();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            $image = UploadedFile::getInstance($model,'image');
+            if ($model->load($this->request->post()) && $model->upload($image) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -91,8 +93,8 @@ class RektorController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        $image = UploadedFile::getInstance($model,'image');
+        if ($this->request->isPost && $model->load($this->request->post()) && $model->upload($image) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

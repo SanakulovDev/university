@@ -15,6 +15,7 @@ use Yii;
  * @property string $email
  * @property string $qabul_vaqti
  * @property string|null $vazifalari
+ * @property string|null $image
  */
 class Rektor extends \yii\db\ActiveRecord
 {
@@ -32,10 +33,11 @@ class Rektor extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['ismi', 'familiyasi', 'otasining_ismi', 'telefon', 'email', 'qabul_vaqti'], 'required'],
+            [['ismi', 'familiyasi', 'otasining_ismi', 'telefon', 'email', 'qabul_vaqti','image'], 'required'],
             [['ismi', 'telefon'], 'string', 'max' => 30],
-            [['familiyasi', 'otasining_ismi'], 'string', 'max' => 100],
+            [['familiyasi','image', 'otasining_ismi'], 'string', 'max' => 100],
             [['email'], 'string', 'max' => 70],
+            ['email', 'email'],
             [['qabul_vaqti'], 'string', 'max' => 40],
             [['vazifalari'], 'string', 'max' => 255],
         ];
@@ -56,5 +58,20 @@ class Rektor extends \yii\db\ActiveRecord
             'qabul_vaqti' => Yii::t('app', 'Qabul Vaqti'),
             'vazifalari' => Yii::t('app', 'Vazifalari'),
         ];
+    }
+
+    public function upload($image)
+    {
+        if ($image) {
+            $dir = Yii::getAlias('@backend')."/web/uploads/rektor/";
+            $image_name = 'rektor_'.time();
+            $image_name .= '.'.$image->extension;
+            if ($image->saveAs($dir.$image_name)) {
+                $this->image = $image_name;
+                return true;
+            }
+        }
+
+        return false;
     }
 }
