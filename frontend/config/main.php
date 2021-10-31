@@ -11,7 +11,29 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+
+    'modules' => [
+        'sanakulov' => [
+            'class' => 'mdm\admin\Module',
+            'layout' => 'left-menu',
+        ],
+    ],
+
     'components' => [
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+        ],
+        'i18n' => [
+            'translations' => [
+                'app' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'sourceLanguage' => 'en-US',
+                    'basePath' =>  __DIR__.DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR .'common/messages',
+                ],
+
+
+            ],
+        ],
         'request' => [
             'csrfParam' => '_csrf-frontend',
             'baseUrl' => '',
@@ -44,6 +66,14 @@ return [
             'rules' => [
             ],
         ],
+    ],
+    'as access' => [
+        'class' => 'yii2mod\rbac\filters\AccessControl',
+        'allowActions' => [
+            'site/*',
+            'admin/*',
+
+        ]
     ],
     'params' => $params,
 ];

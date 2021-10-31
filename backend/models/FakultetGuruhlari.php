@@ -70,7 +70,11 @@ class FakultetGuruhlari extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Talabalar::className(), ['guruh_id' => 'id']);
     }
-    public static function selectList() {
-        return ArrayHelper::map(self::find()->all(), 'id', 'guruh_raqami');
+    public static function selectList($guruh_id = null) {
+        $condition =[];
+        if ($guruh_id){
+            $condition = ['fakultet_id' => $guruh_id];
+        }
+        return ArrayHelper::map(self::find()->where($condition)->all(), 'id', Yii::t('app', 'gurruh_raqami'));
     }
 }

@@ -7,7 +7,9 @@ use yii\widgets\ActiveForm;
 /* @var $model common\models\Talabalar */
 /* @var $form yii\widgets\ActiveForm */
 $fakultet_list = \backend\models\Fakultetlar::selectList();
-$guruh_list = \backend\models\FakultetGuruhlari::selectList();
+$guruh_list = [];
+$uqish_turi = \backend\models\UqishTuri::selectList();
+$talaba_turi = \backend\models\TalabaTuri::selectList()
 ?>
 
 <div class="talabalar-form">
@@ -26,11 +28,11 @@ $guruh_list = \backend\models\FakultetGuruhlari::selectList();
 
     <?= $form->field($model, 'telefon')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'image')->fileInput() ?>
 
-    <?= $form->field($model, 'uqish_turi_id')->textInput() ?>
+    <?= $form->field($model, 'uqish_turi_id')->dropDownList($uqish_turi,['prompt'=>"O'qish turini tanlang"]) ?>
 
-    <?= $form->field($model, 'talaba_turi_id')->textInput() ?>
+    <?= $form->field($model, 'talaba_turi_id')->dropDownList($talaba_turi,['prompt'=>'Talaba turini tanlang']) ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

@@ -22,7 +22,15 @@ return [
             'namespace' => 'common\fixtures',
           ],
     ],
+    'modules' => [
+        'rbac' => [
+            'class' => 'yii2mod\rbac\ConsoleModule'
+        ]
+    ],
     'components' => [
+        'authManager' => [
+            'class' => 'yii\rbac\PhpManager', // or use 'yii\rbac\DbManager'
+        ],
         'log' => [
             'targets' => [
                 [

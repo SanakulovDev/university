@@ -2,7 +2,9 @@
 
 namespace backend\models;
 
+use common\models\Talabalar;
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "talaba_turi".
@@ -52,5 +54,8 @@ class TalabaTuri extends \yii\db\ActiveRecord
     public function getTalabalars()
     {
         return $this->hasMany(Talabalar::className(), ['talaba_turi_id' => 'id']);
+    }
+    public static function selectList() {
+        return ArrayHelper::map(self::find()->all(), 'id', 'nomi');
     }
 }

@@ -7,6 +7,7 @@ use backend\models\Fakultetlar;
 use backend\models\TalabaTuri;
 use backend\models\UqishTuri;
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "talabalar".
@@ -45,11 +46,11 @@ class Talabalar extends \yii\db\ActiveRecord
         return [
             [['fakultet_id', 'guruh_id', 'uqish_turi_id', 'talaba_turi_id','user_id'], 'integer'],
             [['talaba_ismi', 'talaba_familiyasi', 'talaba_otasining_ismi', 'telefon', 'image'], 'required'],
-            [['talaba_ismi'], 'string', 'max' => 50],
+            [['talaba_ismi','image'], 'string', 'max' => 50],
             [['talaba_familiyasi'], 'string', 'max' => 100],
             [['talaba_otasining_ismi'], 'string', 'max' => 70],
             [['telefon'], 'string', 'max' => 30],
-            [['image'], 'string', 'max' => 255],
+            [['image'], 'file','skipOnEmpty'=>true,'extensions'=>['png','jpeg','jpg','svg','ttif']],
             [['talaba_turi_id'], 'exist', 'skipOnError' => true, 'targetClass' => TalabaTuri::className(), 'targetAttribute' => ['talaba_turi_id' => 'id']],
             [['fakultet_id'], 'exist', 'skipOnError' => true, 'targetClass' => Fakultetlar::className(), 'targetAttribute' => ['fakultet_id' => 'id']],
             [['guruh_id'], 'exist', 'skipOnError' => true, 'targetClass' => FakultetGuruhlari::className(), 'targetAttribute' => ['guruh_id' => 'id']],
@@ -116,4 +117,24 @@ class Talabalar extends \yii\db\ActiveRecord
     {
         return $this->hasOne(UqishTuri::className(), ['id' => 'uqish_turi_id']);
     }
+ public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
+
+    public function upload($image)
+    {
+        if ($image) {
+            $dir = Yii::getAlias('@frontend')."/web/uploads/talabalar/";
+            $image_name = 'talabalar_'.time();
+            $image_name .= '.'.$image->extension;
+            if ($image->saveAs($dir.$image_name)) {
+                $this->image = $image_name;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }

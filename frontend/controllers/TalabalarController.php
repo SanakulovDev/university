@@ -7,6 +7,7 @@ use common\models\TalabalarSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * TalabalarController implements the CRUD actions for Talabalar model.
@@ -68,9 +69,11 @@ class TalabalarController extends Controller
     public function actionCreate()
     {
         $model = new Talabalar();
-
+        $identity = \Yii::$app->user->identity;
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            $model->user_id = $identity;
+            $image = UploadedFile::getInstance($model,'image');
+            if ($model->load($this->request->post()) && $model->upload($image) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -92,8 +95,9 @@ class TalabalarController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        $image = UploadedFile::getInstance($model,'image');
+        $model->user_id =$id;
+        if ($this->request->isPost && $model->load($this->request->post()) && $model->upload($image) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
