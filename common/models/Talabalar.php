@@ -21,7 +21,7 @@ use Yii;
  * @property string $image
  * @property int|null $uqish_turi_id
  * @property int|null $talaba_turi_id
- *
+ * @property int|null $user_id
  * @property Fakultetlar $fakultet
  * @property FakultetGuruhlari $guruh
  * @property TalabaTuri $talabaTuri
@@ -43,7 +43,7 @@ class Talabalar extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['fakultet_id', 'guruh_id', 'uqish_turi_id', 'talaba_turi_id'], 'integer'],
+            [['fakultet_id', 'guruh_id', 'uqish_turi_id', 'talaba_turi_id','user_id'], 'integer'],
             [['talaba_ismi', 'talaba_familiyasi', 'talaba_otasining_ismi', 'telefon', 'image'], 'required'],
             [['talaba_ismi'], 'string', 'max' => 50],
             [['talaba_familiyasi'], 'string', 'max' => 100],
@@ -73,6 +73,7 @@ class Talabalar extends \yii\db\ActiveRecord
             'image' => Yii::t('app', 'Image'),
             'uqish_turi_id' => Yii::t('app', 'Uqish Turi ID'),
             'talaba_turi_id' => Yii::t('app', 'Talaba Turi ID'),
+            'user_id'=>Yii::t('app','User Id')
         ];
     }
 

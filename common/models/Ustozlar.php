@@ -2,6 +2,8 @@
 
 namespace common\models;
 
+use backend\models\Fanlar;
+use backend\models\Kafedralar;
 use Yii;
 
 /**
@@ -12,7 +14,7 @@ use Yii;
  * @property string $ismi
  * @property string $familiyasi
  * @property string $telefon
- *
+ * @property integer $user_id
  * @property Fanlar[] $fanlars
  * @property Kafedralar $kafedra
  */
@@ -32,7 +34,7 @@ class Ustozlar extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['kafedra_id'], 'integer'],
+            [['kafedra_id','user_id'], 'integer'],
             [['ismi', 'familiyasi', 'telefon'], 'required'],
             [['ismi'], 'string', 'max' => 25],
             [['familiyasi'], 'string', 'max' => 40],
@@ -52,6 +54,7 @@ class Ustozlar extends \yii\db\ActiveRecord
             'ismi' => Yii::t('app', 'Ismi'),
             'familiyasi' => Yii::t('app', 'Familiyasi'),
             'telefon' => Yii::t('app', 'Telefon'),
+            'user_id'=>Yii::t('app','User ID')
         ];
     }
 

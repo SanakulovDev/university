@@ -16,6 +16,7 @@ class TalabalarController extends Controller
     /**
      * @inheritDoc
      */
+    public $layout = "main";
     public function behaviors()
     {
         return array_merge(
