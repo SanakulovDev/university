@@ -1,9 +1,10 @@
 <?php
 
-namespace frontend\controllers;
+namespace backend\controllers;
 
 use common\models\Talabalar;
 use common\models\TalabalarSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -17,7 +18,6 @@ class TalabalarController extends Controller
     /**
      * @inheritDoc
      */
-    public $layout = "main";
     public function behaviors()
     {
         return array_merge(

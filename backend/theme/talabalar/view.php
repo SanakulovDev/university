@@ -30,15 +30,36 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'fakultet_id',
-            'guruh_id',
+            [
+                'attribute' => 'user_id',
+                'value' => $model->user->username
+            ],
+            [
+                'attribute' => 'fakultet_id',
+                'value' => $model->fakultet->fakultet_nomi
+            ],
+            [
+                'attribute' => 'guruh_id',
+                'value' => $model->guruh->guruh_raqami
+            ],
             'talaba_ismi',
             'talaba_familiyasi',
             'talaba_otasining_ismi',
             'telefon',
-            'image',
-            'uqish_turi_id',
-            'talaba_turi_id',
+            [
+                'attribute' => 'image',
+                'value' => Yii::getAlias('@frontend').'/web/uploads/talabalar/' . $model->image,
+                'format' => ['image', ['width' => '150', 'height' => '150']]
+            ],
+            [
+                'attribute' => 'uqish_turi_id',
+                'value' => $model->uqishTuri->nomi
+            ],
+            [
+                'attribute' => 'talaba_turi_id',
+                'value' => $model->talabaTuri->nomi
+            ],
+
         ],
     ]) ?>
 

@@ -3,17 +3,17 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\Talabalar */
+/* @var $model common\models\Talabalar */
 
 $this->title = Yii::t('app', 'Create Talabalar');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Talabalars'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Talabalars'), 'url' => ['talaba']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="talabalar-create">
+<div class="talabalar-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $this->render('_form', [
+    <?= $this->render('talaba-form', [
         'model' => $model,
     ]) ?>
 

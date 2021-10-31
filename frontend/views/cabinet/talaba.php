@@ -13,17 +13,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="talabalar-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode(Yii::$app->user->identity->id) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
-                'method' => 'post',
-            ],
-        ]) ?>
+        <?= Html::a(Yii::t('app', 'Update'), ['talaba-update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+
     </p>
 
     <?= DetailView::widget([
@@ -48,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'telefon',
             [
                 'attribute' => 'image',
-                'value' => '@web/uploads/talabalar/' . $model->image,
+                'value' => '/web/uploads/talabalar/' . $model->image,
                 'format' => ['image', ['width' => '150', 'height' => '150']]
             ],
             [

@@ -96,7 +96,7 @@ class SiteController extends Controller
         $model = new LoginForm();
             if ($model->load(Yii::$app->request->post()) && $model->login()) {
 
-                return $this->redirect('/talabalar/create');
+                return $this->redirect('/cabinet/index');
             }
 
             $model->password = '';
