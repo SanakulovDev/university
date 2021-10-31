@@ -1,7 +1,11 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
+use backend\models\FakultetGuruhlari;
+use backend\models\Fakultetlar;
+use backend\models\TalabaTuri;
+use backend\models\UqishTuri;
 use Yii;
 
 /**

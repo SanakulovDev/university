@@ -45,9 +45,7 @@
                     ['label' => "Talaba turi", 'icon' => 'tachometer-alt','url'=>['/talaba-turi/']],
                     ['label' => "Kafedra ", 'icon' => 'tachometer-alt','url'=>['/kafedra/']],
                     ['label' => "Kafedra mudiri", 'icon' => 'tachometer-alt','url'=>['/kafedra-mudiri/']],
-                    ['label' => "Talaba turi", 'icon' => 'tachometer-alt','url'=>['/talaba-turi/']],
-                    ['label' => "Talaba turi", 'icon' => 'tachometer-alt','url'=>['/talaba-turi/']],
-
+                    ['label' => "Fanlar", 'icon' => 'tachometer-alt','url'=>['/talaba-turi/']],
                 ],
             ]);
             ?>

@@ -2,16 +2,16 @@
 
 namespace backend\controllers;
 
-use backend\models\Talabalar;
-use backend\models\TalabalarSearch;
+use backend\models\Fanlar;
+use backend\models\FanlarSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * TalabalarController implements the CRUD actions for Talabalar model.
+ * FanlarController implements the CRUD actions for Fanlar model.
  */
-class TalabalarController extends Controller
+class FanlarController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,12 +32,12 @@ class TalabalarController extends Controller
     }
 
     /**
-     * Lists all Talabalar models.
+     * Lists all Fanlar models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new TalabalarSearch();
+        $searchModel = new FanlarSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -47,7 +47,7 @@ class TalabalarController extends Controller
     }
 
     /**
-     * Displays a single Talabalar model.
+     * Displays a single Fanlar model.
      * @param int $id ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -60,13 +60,13 @@ class TalabalarController extends Controller
     }
 
     /**
-     * Creates a new Talabalar model.
+     * Creates a new Fanlar model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Talabalar();
+        $model = new Fanlar();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -82,7 +82,7 @@ class TalabalarController extends Controller
     }
 
     /**
-     * Updates an existing Talabalar model.
+     * Updates an existing Fanlar model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return mixed
@@ -102,7 +102,7 @@ class TalabalarController extends Controller
     }
 
     /**
-     * Deletes an existing Talabalar model.
+     * Deletes an existing Fanlar model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return mixed
@@ -116,15 +116,15 @@ class TalabalarController extends Controller
     }
 
     /**
-     * Finds the Talabalar model based on its primary key value.
+     * Finds the Fanlar model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Talabalar the loaded model
+     * @return Fanlar the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Talabalar::findOne($id)) !== null) {
+        if (($model = Fanlar::findOne($id)) !== null) {
             return $model;
         }
 
