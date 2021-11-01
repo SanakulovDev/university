@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\Talabalar;
 use common\models\User;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
@@ -159,10 +160,10 @@ class SiteController extends Controller
     public function actionSignup()
     {
         $model = new SignupForm();
-
-        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-
-            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+        if ($model->load(Yii::$app->request->post())) {
+            $model->role = $model->type == 2? 'talaba' : 'teacher';
+            if ($model->signup())
+             Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
             return $this->redirect('/site/login');
         }
 

@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model common\models\Ustozlar */
 
-$this->title = ucfirst($model->user->username).' ustoz ma`lumotlari';
+$this->title = ucfirst(Yii::$app->user->identity->username).' ustoz ma`lumotlari';
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Ustozlars'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);

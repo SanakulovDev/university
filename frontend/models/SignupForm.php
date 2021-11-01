@@ -15,6 +15,7 @@ class SignupForm extends Model
     public $email;
     public $password;
     public $type;
+    public $role;
 
     /**
      * {@inheritdoc}
@@ -25,7 +26,7 @@ class SignupForm extends Model
             ['username', 'trim'],
             ['username', 'required'],
             ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
-            ['username', 'string', 'min' => 2, 'max' => 255],
+            [['username','role'], 'string', 'min' => 2, 'max' => 255],
             ['type', 'integer'],
             ['type', 'required'],
             ['email', 'trim'],
@@ -58,8 +59,17 @@ class SignupForm extends Model
         $user->setPassword($this->password);
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
+        if ($user->save()){
+            $auth = Yii::$app->authManager;
+            $authrole = $auth->getRole($this->role);
+            if (!$auth->getAssignment($this->role, $user->id)) {
+                $auth->assign($authrole, $user->id);
 
-        return $user->save() && $this->sendEmail($user);
+            }
+
+            return true;
+        }
+        return $user->save();
     }
 
     /**
