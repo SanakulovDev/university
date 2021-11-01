@@ -126,7 +126,7 @@ class Talabalar extends \yii\db\ActiveRecord
     public function upload($image)
     {
         if ($image !== null) {
-            $dir = Yii::getAlias('@frontend')."/web/uploads/company/";
+            $dir = Yii::getAlias('@frontend')."/web/uploads/talabalar/";
             $image_name = "talabalar_".time();
             $image_name .= '.'.$image->extension;
             if ($image->saveAs($dir.$image_name)) {

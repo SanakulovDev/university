@@ -14,7 +14,7 @@ $talaba_turi = \backend\models\TalabaTuri::selectList();
 
 <div class="talabalar-form">
 
-    <?php $form = ActiveForm::begin(['options'=>['enctype'=>'multpart/form-data']]); ?>
+    <?php $form = ActiveForm::begin(['options'=>['enctype'=>'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'fakultet_id')->dropDownList($fakultet_list,['prompt'=>"Fakultetni tanlang"]) ?>
 

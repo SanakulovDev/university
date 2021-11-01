@@ -21,7 +21,7 @@ $kafedra_list = \backend\models\Kafedralar::selectList();
 
     <?= $form->field($model, 'telefon')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
+    <?= $form->field($model,'image')->fileInput()?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
