@@ -137,5 +137,9 @@ class Talabalar extends \yii\db\ActiveRecord
 
         return false;
     }
+    public function signup()
+    {
+        $model = new Talabalar();
+    }
 
 }

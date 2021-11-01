@@ -7,16 +7,16 @@ use yii\widgets\DetailView;
 /* @var $model common\models\Talabalar */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Talabalars'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Talabalars'), 'url' => ['talaba']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="talabalar-view">
 
-    <h1><?= Html::encode(Yii::$app->user->identity->id) ?></h1>
+    <h1><?= ucfirst($model->user->username)  ?> Talaba ma'lumotlari </h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Update'), ['talaba-update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('app', 'Tahrirlash'), ['talaba-update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
 
     </p>
 

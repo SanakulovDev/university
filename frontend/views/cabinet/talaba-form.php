@@ -9,7 +9,7 @@ use yii\widgets\ActiveForm;
 $fakultet_list = \backend\models\Fakultetlar::selectList();
 $guruh_list = [];
 $uqish_turi = \backend\models\UqishTuri::selectList();
-$talaba_turi = \backend\models\TalabaTuri::selectList()
+$talaba_turi = \backend\models\TalabaTuri::selectList();
 ?>
 
 <div class="talabalar-form">

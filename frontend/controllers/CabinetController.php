@@ -2,7 +2,9 @@
 
 namespace frontend\controllers;
 
+use common\models\Talaba;
 use common\models\Talabalar;
+use common\models\User;
 use common\models\Ustozlar;
 use Yii;
 use yii\web\Controller;
@@ -17,10 +19,12 @@ class CabinetController extends Controller
         $identity = Yii::$app->user->identity;
         $talaba = $this->findTalaba($identity->id);
         $teacher = $this->findTeacher($identity->id);
-        if ($talaba)
+        $model = $this->findModel($identity);
+        if ($model)
             return $this->redirect('talaba');
         if ($teacher)
             return $this->redirect('ustoz');
+
 
         return $this->render('index',[
             'talaba'=>$talaba,
@@ -43,31 +47,32 @@ class CabinetController extends Controller
     {
         $identity = \Yii::$app->user->identity;
 
-            $model = $this->findTalaba($identity->id);
+            $model = new Talabalar();
             if ($this->request->isPost && !empty($identity->id)) {
 
                 $model->user_id = $identity->id;
-                $image = UploadedFile::getInstance($model, 'image');
                 if ($model->load($this->request->post())) {
+                    $image = UploadedFile::getInstance($model, 'image');
                     if ($model->upload($image) && $model->save()) {
                         return $this->redirect('talaba');
                     }
                 }
-            } else {
-                return $this->redirect('/site/login');
             }
         return $this->render('talaba-create', [
             'model' => $model,
         ]);
     }
 
-    public function actionTalabaUpdate($id)
+    public function actionTalabaUpdate($id = null)
     {
+        $identity=  Yii::$app->user->identity;
         $model = $this->findTalaba($id);
-        if (!empty($model)) {
+        if ($id == null)
+            return $this->redirect('/cabinet/talaba-create');
+        if ($this->request->isPost && $model->load($this->request->post())) {
             $image = UploadedFile::getInstance($model, 'image');
-            if ($this->request->isPost && $model->load($this->request->post()) && $model->upload($image) && $model->save()) {
-                return $this->redirect('talaba');
+            if ($model->upload($image) && $model->save()) {
+                return $this->redirect(['talaba', 'id' => $id]);
             }
         }
         return $this->render('talaba-update', [
@@ -77,7 +82,7 @@ class CabinetController extends Controller
 
     protected function findTalaba($id)
     {
-        if (($model = Talabalar::findOne(['user_id' => $id])) !== null) {
+        if (($model = Talabalar::findOne(['id' => $id])) !== null) {
             return $model;
         }
         return false;
@@ -89,5 +94,11 @@ class CabinetController extends Controller
         }
         return false;
     }
-
+    protected function findModel($id)
+    {
+        if (($model = User::findOne(['id' => $id])) !== null) {
+            return $model;
+        }
+        return false;
+    }
 }
