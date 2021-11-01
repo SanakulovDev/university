@@ -161,7 +161,8 @@ class SiteController extends Controller
     {
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
-            $model->role = $model->type == 2? 'talaba' : 'teacher';
+            $model->role = $model->type == 0?'admin':null;
+            $model->role = $model->type == 1? 'teacher' : 'student';
             if ($model->signup())
              Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
             return $this->redirect('/site/login');

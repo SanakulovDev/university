@@ -13,12 +13,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="talabalar-view">
 
-    <h1><?= ucfirst($model->user->username)  ?> Talaba ma'lumotlari </h1>
+    <h1><?= ucfirst(Yii::$app->user->identity->username)  ?> Talaba ma'lumotlari </h1>
 
-    <p>
-        <?= Html::a(Yii::t('app', 'Tahrirlash'), ['talaba-update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-
-    </p>
 
     <?= DetailView::widget([
         'model' => $model,
@@ -56,5 +52,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
         ],
     ]) ?>
+
+    <p>
+        <?= Html::a(Yii::t('app', 'Tahrirlash'), ['talaba-update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+
+    </p>
 
 </div>
