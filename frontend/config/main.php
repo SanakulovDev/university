@@ -12,17 +12,17 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
 
-//    'modules' => [
-//        'sanakulov' => [
-//            'class' => 'mdm\admin\Module',
-//            'layout' => 'left-menu',
-//        ],
-//    ],
+    'modules' => [
+        'sanakulov' => [
+            'class' => 'mdm\admin\Module',
+            'layout' => 'left-menu',
+        ],
+    ],
 
     'components' => [
-//        'authManager' => [
-//            'class' => 'yii\rbac\DbManager',
-//        ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+        ],
 
         'request' => [
             'csrfParam' => '_csrf-frontend',
@@ -61,9 +61,8 @@ return [
         'class' => 'yii2mod\rbac\filters\AccessControl',
         'allowActions' => [
             'site/*',
-            'cabinet/*',
-            'ajax/*',
             'admin/*',
+            'sanakulov/*'
 
         ]
     ],
